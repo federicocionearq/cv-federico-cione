@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federico Cione — Arquitecto · Proyectista</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #141412;
+    --mid: #6b6b66;
+    --rule: #d8d5ce;
+    --bg: #f4f2ed;
+    --white: #faf9f6;
+  }
+
+  html { font-size: 10px; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 1.3rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 794px;
+    margin: 0 auto;
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  header {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .photo-wrap {
+    overflow: hidden;
+    height: 220px;
+    background: var(--rule);
+  }
+
+  .photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(100%) contrast(1.05);
+    display: block;
+  }
+
+  .header-text {
+    padding: 3.2rem 4rem 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-left: 1px solid var(--rule);
+  }
+
+  .name-block h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    font-size: 6.4rem;
+    letter-spacing: 0.06em;
+    line-height: 0.9;
+    color: var(--ink);
+  }
+
+  .name-block .subtitle {
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 1.05rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-top: 1rem;
+  }
+
+  .contact-row {
+    display: flex;
+    gap: 1.8rem;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--mid);
+    letter-spacing: 0.04em;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .contact-row span::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: var(--rule);
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    margin-bottom: 1px;
+  }
+
+  .contact-row a {
+    color: var(--mid);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+  .contact-row a::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: var(--rule);
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    margin-bottom: 1px;
+  }
+
+  aside {
+    padding: 3.8rem 2.8rem 5rem 3.8rem;
+    border-right: 1px solid var(--rule);
+  }
+
+  main {
+    padding: 3.8rem 4rem 5rem 3.6rem;
+  }
+
+  .section-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.22em;
+    color: var(--ink);
+    margin-bottom: 1.6rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .section { margin-bottom: 3.4rem; }
+  .section:last-child { margin-bottom: 0; }
+
+  .perfil-text {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.75;
+  }
+
+  .edu-item { margin-bottom: 2rem; }
+  .edu-item:last-child { margin-bottom: 0; }
+
+  .edu-school {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+
+  .edu-degree {
+    font-size: 1.15rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink);
+    margin-top: 0.1rem;
+    line-height: 1.4;
+  }
+
+  .edu-date {
+    font-size: 0.9rem;
+    font-weight: 200;
+    color: var(--mid);
+    letter-spacing: 0.1em;
+    margin-top: 0.25rem;
+  }
+
+  .skill-line {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--mid);
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--rule);
+    letter-spacing: 0.02em;
+  }
+  .skill-line.strong {
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .skill-line .skill-note {
+    font-size: 0.85rem;
+    font-weight: 200;
+    color: var(--mid);
+    font-style: italic;
+    margin-left: 0.4rem;
+  }
+
+  .lang-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 1.18rem;
+  }
+  .lang-item:last-child { border-bottom: none; }
+  .lang-level {
+    font-size: 0.85rem;
+    font-weight: 200;
+    color: var(--mid);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .exp-item {
+    margin-bottom: 2.6rem;
+    padding-bottom: 2.6rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .exp-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .exp-role {
+    font-family: 'Jost', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .exp-date {
+    font-size: 0.88rem;
+    font-weight: 200;
+    color: var(--mid);
+    white-space: nowrap;
+    letter-spacing: 0.08em;
+  }
+
+  .exp-company {
+    font-size: 1.1rem;
+    font-weight: 200;
+    font-style: italic;
+    color: var(--mid);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.01em;
+  }
+
+  .exp-bullets {
+    font-size: 1.18rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.72;
+    padding-left: 0;
+    list-style: none;
+  }
+  .exp-bullets li {
+    padding-left: 1.2em;
+    position: relative;
+    margin-bottom: 0.2rem;
+  }
+  .exp-bullets li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--rule);
+    font-weight: 300;
+  }
+
+  .exp-note {
+    font-size: 1.05rem;
+    font-weight: 200;
+    font-style: italic;
+    color: var(--mid);
+    margin-top: 0.8rem;
+    line-height: 1.5;
+    border-left: 2px solid var(--rule);
+    padding-left: 1rem;
+  }
+
+  .exp-adicional .exp-role {
+    font-size: 1.2rem;
+  }
+  .exp-adicional .exp-desc {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { max-width: 100%; }
+    @page { margin: 0; size: A4; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="photo-wrap">
+      <img src="foto.jpg" alt="Federico Cione">
+    </div>
+    <div class="header-text">
+      <div class="name-block">
+        <h1>Federico<br>Cione</h1>
+        <div class="subtitle">Proyectista &middot; Desarrollo de Proyecto &middot; Documentación Técnica</div>
+      </div>
+      <div class="contact-row">
+        <span>+54 9 3489 54 12 86</span>
+        <span>federico.cione@gmail.com</span>
+        <span>Buenos Aires</span>
+        <a href="https://www.linkedin.com/in/federico-cione-100a5b59" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </header>
+
+  <aside>
+
+    <div class="section">
+      <p class="section-label">Formación</p>
+      <div class="edu-item">
+        <div class="edu-school">U. Torcuato Di Tella</div>
+        <div class="edu-degree">Posgrado en Arquitectura y Tecnologías</div>
+        <div class="edu-date">2009 – 2010</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-school">Universidad de Belgrano</div>
+        <div class="edu-degree">Arquitecto</div>
+        <div class="edu-date">2003 – 2008</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-label">Software</p>
+      <div class="skill-line strong">AutoCAD / AutoCAD Architecture</div>
+      <div class="skill-line strong">SketchUp + V-Ray</div>
+      <div class="skill-line strong">Adobe Photoshop</div>
+      <div class="skill-line">Revit<span class="skill-note">coordinación y revisión de modelos</span></div>
+      <div class="skill-line">BIM<span class="skill-note">metodología de proyecto y coordinación interdisciplinaria</span></div>
+      <div class="skill-line">Microsoft Project · Merlin Project</div>
+    </div>
+
+    <div class="section">
+      <p class="section-label">Idiomas</p>
+      <div class="lang-item">
+        <span>Español</span>
+        <span class="lang-level">Nativo</span>
+      </div>
+      <div class="lang-item">
+        <span>Inglés</span>
+        <span class="lang-level">CAE · Avanzado</span>
+      </div>
+      <div class="lang-item">
+        <span>Italiano</span>
+        <span class="lang-level">Avanzado</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <main>
+
+    <div class="section">
+      <p class="section-label">Perfil</p>
+      <p class="perfil-text">Arquitecto con 20 años de experiencia en el desarrollo de proyectos de arquitectura, desde el anteproyecto hasta la documentación ejecutiva. Especializado en la resolución técnica de proyectos residenciales, comerciales e industriales, articulando diseño, estructura e instalaciones en soluciones constructivas coherentes.</p>
+    </div>
+
+    <div class="section">
+      <p class="section-label">Experiencia</p>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">Project Partner</span>
+          <span class="exp-date">MAR. 2025 — ACTUALIDAD</span>
+        </div>
+        <div class="exp-company">Amarilla · Buenos Aires</div>
+        <ul class="exp-bullets">
+          <li>Revisión y desarrollo técnico de proyectos residenciales.</li>
+          <li>Resolución de interfaces entre arquitectura, estructura e instalaciones.</li>
+          <li>Evaluación de constructibilidad de soluciones de proyecto.</li>
+          <li>Elaboración y revisión de documentación técnica.</li>
+          <li>Asesoramiento en definiciones de diseño con equipos de proyecto.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">Arquitecto Independiente</span>
+          <span class="exp-date">2014 — ACTUALIDAD <em style="font-size:0.8em; font-weight:200; color:var(--mid);">(proyectos puntuales)</em></span>
+        </div>
+        <div class="exp-company">Actividad propia · Buenos Aires</div>
+        <ul class="exp-bullets">
+          <li>Desarrollo integral del proyecto de vivienda unifamiliar en Los Cardales.</li>
+          <li>Proyecto y documentación técnica de remodelaciones residenciales.</li>
+          <li>Resolución técnica y coordinación de especialidades.</li>
+          <li>Seguimiento de obra durante la ejecución del proyecto.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">Jefe de Obra</span>
+          <span class="exp-date">FEB. 2023 — ABR. 2025</span>
+        </div>
+        <div class="exp-company">CAPCO SRL</div>
+        <ul class="exp-bullets">
+          <li>Resolución técnica de proyecto durante la ejecución de viviendas unifamiliares.</li>
+          <li>Coordinación de documentación técnica con contratistas.</li>
+          <li>Ajustes de proyecto en obra y control presupuestario.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">Arquitecto Responsable de Proyecto y DO</span>
+          <span class="exp-date">2020 — 2023</span>
+        </div>
+        <div class="exp-company">G19 Estudio de Arquitectura</div>
+        <ul class="exp-bullets">
+          <li>Desarrollo del proyecto de remodelación de local comercial en Av. Córdoba 4680.</li>
+          <li>Proyecto integral de arquitectura y equipamiento para franquicia comercial en Bahía Blanca.</li>
+          <li>Elaboración de documentación técnica de ejecución.</li>
+          <li>Resolución de detalles constructivos.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">Arquitecto — Desarrollo Técnico y DO</span>
+          <span class="exp-date">2014 — 2020</span>
+        </div>
+        <div class="exp-company">Francisco Cadau Oficina de Arquitectura</div>
+        <ul class="exp-bullets">
+          <li>Desarrollo de documentación técnica para proyectos residenciales multifamiliares.</li>
+          <li>Coordinación de especialidades y resolución de interfaces técnicas.</li>
+          <li>Investigación técnica y participación en concursos públicos y privados.</li>
+          <li>Dirección y seguimiento de obra.</li>
+        </ul>
+        <div class="exp-note">Proyecto destacado: <strong>Edificio Damero</strong> — premiado y publicado en revistas especializadas de arquitectura.</div>
+        <div class="exp-note" style="margin-top:0.5rem;">Incluye participación en Integer Praestatio SRL (empresa del estudio) en obras civiles e industriales — cómputos, presupuestos y ejecución de obra.</div>
+      </div>
+
+      <div class="exp-item exp-adicional">
+        <div class="exp-header">
+          <span class="exp-role">Arquitecto Supervisor de Obras</span>
+          <span class="exp-date">2010 — 2014</span>
+        </div>
+        <div class="exp-company">K-SAS S.R.L.</div>
+        <div class="exp-desc">Desarrollo técnico y supervisión de edificios residenciales multifamiliares.</div>
+      </div>
+
+      <div class="exp-item exp-adicional">
+        <div class="exp-header">
+          <span class="exp-role">Junior</span>
+          <span class="exp-date">DIC. 2006 — JUL. 2008</span>
+        </div>
+        <div class="exp-company">Siemens Real Estate</div>
+        <div class="exp-desc">Planificación de espacios corporativos, licitaciones y coordinación de proveedores.</div>
+      </div>
+
+    </div>
+  </main>
+
+</div>
+</body>
+</html>
